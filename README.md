@@ -1,0 +1,2 @@
+# JavaCode
+Training Java codes
