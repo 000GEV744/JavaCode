@@ -14,7 +14,7 @@ public class Student implements Comparable<Object>{
 	}
 
 
-	public Student(String fName, String lName, int gpa) {
+	public Student(String fName, String lName, double gpa) {
 		super();
 		this.fName = fName;
 		this.lName = lName;
