@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Comparator;
 import java.text.SimpleDateFormat;
 
-public class AgeComparator implements Comparator {
+public class AgeComparator implements Comparator<Object> {
 
 	@Override
 	public int compare(Object o1, Object o2) {

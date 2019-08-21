@@ -1,15 +1,18 @@
 package comm.example1;
 
 
-import java.text.SimpleDateFormat;  
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class Main {
 	
-	static Set<Employee> ls= new TreeSet<Employee>();
+	static List<Employee> ls= new ArrayList<Employee>();
 	static Scanner scanner=new Scanner(System.in);
 	static int choice=0;
 
@@ -34,7 +37,20 @@ public class Main {
     	 choice=scanner.nextInt();
     	 switch(choice) {
     	 case 1:
+    		 Collections.sort(ls);
     		 EmployeeBO.printEmployees(ls);
+    		 break;
+    	 case 2:
+    		 Collections.sort(ls, new AgeComparator());
+    		 EmployeeBO.printEmployees(ls);
+    		 break;
+    	 case 0:
+				System.out.println("Bye !");
+				System.exit(0);	 
+				break;
+				
+			default:break;	 
+    		 
     	 }
     	 
      }while(choice!=0);
