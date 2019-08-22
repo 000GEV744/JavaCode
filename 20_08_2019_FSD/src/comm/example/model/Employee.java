@@ -6,20 +6,32 @@ public class Employee {
 	private String fName;
 	private String lName;
 	private String email;
+	private int deptId;
+	
 	
 	
 	public Employee() {
 		super();
 	}
 	
-	public Employee(int id, String fName, String lName, String email) {
+	public Employee(int id, String fName, String lName, String email,int deptId) {
 		super();
 		this.id = id;
 		this.fName = fName;
 		this.lName = lName;
 		this.email = email;
+		this.deptId=deptId;
 	}
 	
+	
+	public int getDeptId() {
+		return deptId;
+	}
+
+	public void setDeptId(int deptId) {
+		this.deptId = deptId;
+	}
+
 	public int getId() {
 		return id;
 	}

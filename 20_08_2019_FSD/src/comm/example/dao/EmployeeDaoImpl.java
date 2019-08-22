@@ -33,7 +33,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
                st=conn.createStatement();
                rs=st.executeQuery("select * from employee");
                while(rs.next()) {
-            	   list.add(new Employee(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4)));
+            	   list.add(new Employee(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5)));
                }
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -46,11 +46,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public void createEmployee(Employee e){
 	try {	
-		pst=conn.prepareStatement("insert into employee values(?, ?, ?, ?)");
+		pst=conn.prepareStatement("insert into employee values(?, ?, ?, ?,?)");
 		pst.setInt(1,e.getId());
 		pst.setString(2, e.getfName());
 		pst.setString(3, e.getlName());
 		pst.setString(4, e.getEmail());
+		pst.setInt(5, e.getDeptId());
 		pst.executeUpdate();
 	}catch(SQLException ex) {
 		System.out.println("Duplicate id or duplicate email\n");
@@ -67,12 +68,24 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			pst.setInt(1, id);
 			rs= pst.executeQuery();
 			while(rs.next()) {
-			emp=new Employee(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4));
+			emp=new Employee(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return emp;
+	}
+
+	@Override
+	public void deleteEmployeeById(Integer id) {
+		try {
+			pst=conn.prepareStatement("delete from employee where id=?");
+			pst.setInt(1, id);
+			pst.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

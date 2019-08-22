@@ -29,22 +29,24 @@ public class EmployeeMain {
 					String lname=sc.next();
 					System.out.println("employee email: ");
 					String email=sc.next();
-					service.createEmployee(new Employee(id,fname,lname,email));
+					System.out.println("employee deptId: ");
+					int deptno=sc.nextInt();
+					service.createEmployee(new Employee(id,fname,lname,email,deptno));
 					break;
 					
 			case 2:
 				   List<Employee> list = service.getAllEmployees();
-				   System.out.println("ID\tFNAME\tLNAME\tEMAIL");
+				   System.out.println("ID\tFNAME\tLNAME\tEMAIL\tdeptId");
 				   for(Employee e:list) {
-					   System.out.printf("%d\t%s\t%s\t%s\n",e.getId(),e.getfName(),e.getlName(),e.getEmail());
+					   System.out.printf("%d\t%s\t%s\t%s\n",e.getId(),e.getfName(),e.getlName(),e.getEmail(),e.getDeptId());
 				   }
 				   break;
 			case 3:
 				   System.out.println("employee Id: ");
 				   int empId=sc.nextInt();
 				   Employee e= service.getEmployeeById(empId);
-				   System.out.println("ID\tFNAME\tLNAME\tEMAIL");
-				   System.out.printf("%d\t%s\t%s\t%s\n",e.getId(),e.getfName(),e.getlName(),e.getEmail());
+				   System.out.println("ID\tFNAME\tLNAME\tEMAIL\tDeptId");
+				   System.out.printf("%d\t%s\t%s\t%s\n",e.getId(),e.getfName(),e.getlName(),e.getEmail(),e.getDeptId());
 				   break;	
 				   
 			case 0:

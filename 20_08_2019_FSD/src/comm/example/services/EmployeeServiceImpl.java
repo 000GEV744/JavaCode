@@ -31,5 +31,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return dao.getEmployeeById(id);
 		
 	}
+
+	@Override
+	public void deleteEmployeeById(Integer id) {
+		// TODO Auto-generated method stub
+		dao.deleteEmployeeById(id);
+	}
 	
 }
