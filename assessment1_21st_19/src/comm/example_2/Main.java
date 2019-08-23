@@ -1,4 +1,4 @@
-package comm.example2;
+package comm.example_2;
 import java.util.Scanner;
 public class Main {
  static Scanner sc=new Scanner(System.in);

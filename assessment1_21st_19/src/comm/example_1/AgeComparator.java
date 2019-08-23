@@ -1,4 +1,4 @@
-package comm.example1;
+package comm.example_1;
 
 import java.util.Date;
 import java.util.Comparator;

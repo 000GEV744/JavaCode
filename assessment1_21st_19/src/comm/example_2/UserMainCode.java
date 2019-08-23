@@ -1,4 +1,4 @@
-package comm.example2;
+package comm.example_2;
 
 public class UserMainCode {
 
