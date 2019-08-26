@@ -1,5 +1,6 @@
 package comm.example_3;
 import java.util.*;
+import java.util.Map.Entry;
 public class LetterSequence {
 
 	private String sentence;
@@ -21,11 +22,12 @@ public class LetterSequence {
 	}
 
 
-	public void setSentence(String sentence) {
+	private void setSentence(String sentence) {
 		this.sentence = sentence;
 	}
 	
-	private TreeMap<Character,Integer> computeFrequency(){
+	public TreeMap<Character,Integer> computeFrequency(){
+		
 		char[] c=sentence.replaceAll(" ", "").toCharArray();
         int[] freq=new int[26];
         TreeMap<Character,Integer> tMap=new TreeMap<Character,Integer>();
@@ -54,6 +56,11 @@ public class LetterSequence {
 	}
 	public void displayLetterfrequency(TreeMap<Character,Integer>frequencyMap) {
 		
-		
+		for(Map.Entry<Character, Integer> entry: frequencyMap.entrySet()) {
+			System.out.print("\n"+entry.getKey()+"\t");
+			for(int j=0;j<entry.getValue();j++) {
+				System.out.print("*");
+			}
+		}
 	}
 }
