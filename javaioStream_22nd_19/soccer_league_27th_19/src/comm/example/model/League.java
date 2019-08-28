@@ -1,0 +1,53 @@
+package comm.example.model;
+
+import java.io.Serializable;
+
+public class League  implements Serializable{
+
+	/**
+	 * 
+	 */
+	@SuppressWarnings("unused")
+	public static int  serialVersionUID = 100;
+	private String title, season;
+	private int Year;
+	
+	
+	public League() {
+		super();
+	}
+	
+	public League(String title, String season, int year) {
+		super();
+		this.title = title;
+		this.season = season;
+		Year = year;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public String getSeason() {
+		return season;
+	}
+	
+	public void setSeason(String season) {
+		this.season = season;
+	}
+	
+	public int getYear() {
+		return Year;
+	}
+	
+	public void setYear(int year) {
+		Year = year;
+	}
+	
+	
+	
+}
