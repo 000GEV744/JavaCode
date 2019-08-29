@@ -18,58 +18,61 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import comm.example.model.*;
 
+/**
+ * Servlet Filter implementation class LoginFilter2
+ */
 @WebFilter(dispatcherTypes = {
-		DispatcherType.REQUEST, 
-		DispatcherType.FORWARD, 
-		DispatcherType.INCLUDE, 
-		DispatcherType.ERROR
-}
-			, urlPatterns = { "/login" })
-public class LoginFilter implements Filter {
+				DispatcherType.REQUEST, 
+				DispatcherType.FORWARD, 
+				DispatcherType.INCLUDE, 
+				DispatcherType.ERROR
+		}
+					, urlPatterns = { "/login" })
+public class LoginFilter2 implements Filter {
 
-	RequestDispatcher view=null;
-	
-    public LoginFilter() {
-        // TODO Auto-generated constructor stub
+    RequestDispatcher view=null;
+    
+    public LoginFilter2() {
+       
     }
 
 	
 	public void destroy() {
-		// TODO Auto-generated method stub
+		
 	}
 
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
-		String email=request.getParameter("email");
-		
-		Users user = new Users();
-		int flag = 0;
-		List<String> emails = new ArrayList<String>();
+		String email= request.getParameter("email");
+		String password = request.getParameter("password");
+		Users user= new Users();
+		int flag=0;
+		List<String> passowrdList= new ArrayList<String>();
 		try {
-			emails=user.emailValidation();
-			for(String s:emails) {
+			passowrdList=user.passwordValidation(email);
+			for(String s : passowrdList) {
 				
-			 if(s.equals(email))	{
-				 flag=1;
-				 chain.doFilter(request, response);
-			 }
-			 
+				if(s.equals(password)) {
+					  flag=1;
+                      chain.doFilter(request, response);
+				}
+				
 			}
 			if(flag==0) {
-				 view = request.getRequestDispatcher("login.html");
-				 view.forward(request, response);
-			}	
+				view = request.getRequestDispatcher("login.html");
+				view.forward(request, response);
+			}
 		} catch (NamingException | SQLException e) {
-			
 			e.printStackTrace();
 		}
+		
 		
 	}
 
 	
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
+		
 	}
 
 }

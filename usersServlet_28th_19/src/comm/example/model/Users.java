@@ -2,6 +2,7 @@ package comm.example.model;
 
 import java.io.Serializable;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -69,7 +70,7 @@ public class Users implements Serializable {
 		this.country = country;
 	}	
 	
-	public List<String> getEmployees() throws NamingException, SQLException {
+	public List<String> emailValidation() throws NamingException, SQLException {
 		connection = MyconnectionFactory.getMySQLConnectionForMyDB();
 		List<String> list=new ArrayList<String>();
 		Statement st = connection.createStatement();
@@ -77,9 +78,22 @@ public class Users implements Serializable {
 		while(rs.next()) {
 			list.add(rs.getString(1));
 		}
+			
+		return list;
 		
-		
-		return null;
+	}
+	
+	public List<String> passwordValidation(String email) throws NamingException, SQLException {
+		connection = MyconnectionFactory.getMySQLConnectionForMyDB();
+		List<String> list=new ArrayList<String>();
+		PreparedStatement ps = connection.prepareStatement("select password from users where email=?");
+		ps.setString(1, email);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			list.add(rs.getString(1));
+		}
+			
+		return list;
 		
 	}
 }
