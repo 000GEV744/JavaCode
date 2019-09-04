@@ -12,7 +12,7 @@ public class MulticastChatServer {
         int portnumber = 1236;
         MulticastSocket serverMulticastSocket=null;
         
-        do {
+        do { 
         	// Create a MulticastSocket
         	serverMulticastSocket = new MulticastSocket(portnumber);
             System.out.println("MulticastSocket is created...");
